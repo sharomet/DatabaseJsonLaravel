@@ -43,20 +43,20 @@ class Validate
     }
 
     /**
-     * Checking that types from array matching with [boolean, integer, string, double]
+     * Checking that types from array matching with [boolean, integer, string, double, array]
      * @param array $types Indexed array
      * @return bool
      * @throws DatabaseJsonException
      */
     public static function types(array $types)
     {
-        $defined = array('boolean', 'integer', 'string', 'double');
+        $defined = array('boolean', 'integer', 'string', 'double', 'array');
         $diff    = array_diff($types, $defined);
 
         if (empty($diff)) {
             return true;
         }
-        throw new DatabaseJsonException('Wrong types: "' . implode(', ', $diff) . '". Available "boolean, integer, string, double"');
+        throw new DatabaseJsonException('Wrong types: "' . implode(', ', $diff) . '". Available "boolean, integer, string, double, array"');
     }
 
     /**
